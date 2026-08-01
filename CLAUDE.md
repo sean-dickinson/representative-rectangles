@@ -79,3 +79,9 @@ or re-scope them as things change).
 - Prefer Rails built-ins (Active Storage for file uploads, built-in
   authentication generator) over adding new gems/services unless there's a
   clear gap.
+
+**Read [docs/CONVENTIONS.md](docs/CONVENTIONS.md) before writing or reviewing
+code.** It is the detailed version of this section — the house style, the
+security rules for the public submission path, testing expectations, and the
+standard code review judges against. It also lists what is deliberately out of
+scope, so review doesn't flag intentional omissions.
