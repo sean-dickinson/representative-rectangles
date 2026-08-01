@@ -48,6 +48,13 @@ completion and quality of submissions.
    cropping, respecting the original orientation (portrait vs. landscape)
    rather than forcing a fixed page orientation for every submission.
 
+## Current plan of work
+
+See [TASKS.md](TASKS.md) for the task breakdown — the ordered units of work
+building toward the workflow above, plus the open decisions that block
+specific tasks. Keep it up to date as work progresses (check tasks off, add
+or re-scope them as things change).
+
 ## Explicit non-goals
 
 - No Canvas API integration yet (submission pull or OAuth) — CSV roster
