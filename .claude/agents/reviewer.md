@@ -17,12 +17,14 @@ not evidence.
 
 Review at two levels, both required:
 
-1. **Code against the plan.** Was the approved approach actually built, with
-   the tests it promised — including the failure and edge paths?
-2. **Plan against the issue.** Do the delivered criteria genuinely satisfy
-   the issue's outcome-level acceptance criteria? An implementation that
-   perfectly meets a plan which quietly lowered the bar fails here. This
-   level is easy to skip and it is the one that catches real problems.
+1. **Code against the issue.** Is every acceptance criterion genuinely
+   satisfied, failure and edge paths included? The issue says what must be
+   true, and a PR that follows its plan faithfully while missing an AC fails
+   here. This level is the easy one to skim and the one that catches real
+   problems.
+2. **Code against the plan.** Was the approved approach the one built, and
+   were the approved design decisions the ones made? Silent divergence is a
+   finding even when the result works — the maintainer approved a shape.
 
 Every finding cites an issue AC, an item in the approved plan, or a specific
 rule in CONVENTIONS.md. If something bothers you and you cannot cite one of

@@ -41,25 +41,39 @@ title, and branches use the **task** number: `task-01-auth-and-app-shell`.
 ## Implementer: plan first
 
 **Post a plan as an issue comment and stop. Do not write code until the
-maintainer approves it.** The approved plan is what the reviewer judges the
-PR against, so it is a contract, not a sketch.
+maintainer approves it.** The issue's acceptance criteria say what must be
+true; the approved plan commits you to how you'll get there. The reviewer
+holds you to both.
 
 Before planning, read the issue, CLAUDE.md, CONVENTIONS.md, and the code as
-it actually exists today. The issue's acceptance criteria are deliberately
-outcome-level; turning them into implementation is your job, and it's the
-part the maintainer is approving.
+it actually exists today.
 
-The plan comment states:
+A plan conveys **the general shape of the work and the decisions behind it**.
+It is not a specification of the change. Do not list the files you'll touch,
+do not sketch code, and do not enumerate the tests you'll write —
+CONVENTIONS.md already says what each test layer is for and requires the
+failure and edge paths be covered, so restating that in a plan is noise.
+Aim for something a person can read in a minute.
 
-- **Approach** — the shape of the change: models, controllers, routes,
-  views, jobs. Name things.
-- **Acceptance criteria, refined** — each issue AC restated as something
-  concretely checkable, labelled with the issue's AC number. Every issue AC
-  gets covered; if one can't be, say so and why rather than dropping it.
-- **Tests** — what you'll write at each layer, including the failure and
-  edge paths. CONVENTIONS.md makes happy-path-only incomplete.
-- **Anything the issue leaves open** — every question you'd otherwise guess
-  at. This is the section the maintainer is really reading.
+Use these sections:
+
+```
+## Approach
+## Design decisions
+## Open questions
+```
+
+- **Approach** — the shape of the change in a short paragraph or a few
+  bullets. Which parts of the app grow, and how they fit together. Enough
+  that the maintainer can picture it and object; no more.
+- **Design decisions** — every choice the issue and the conventions did not
+  already make for you. For each: what you chose, what you considered
+  instead, and why. This is the section the maintainer is actually reading.
+  A plan with an empty Design decisions section on a non-trivial task means
+  you haven't looked hard enough.
+- **Open questions** — anything you'd otherwise have to guess at. If a
+  design decision could reasonably go either way and you have no strong
+  preference, it belongs here rather than above.
 
 Apply `needs-approval`, tag `@sean-dickinson`, and stop. On approval, swap
 `needs-approval` for `in-progress` and build. If the maintainer amends the
@@ -101,11 +115,14 @@ implementer's account of it.
 
 Two levels, both required:
 
-1. **Code against the plan.** Was the approved approach built, with the
-   tests it promised?
-2. **Plan against the issue.** Do the delivered ACs actually satisfy the
-   issue's outcome-level ACs? A plan that met a lowered bar still fails
+1. **Code against the issue.** Is every acceptance criterion actually
+   satisfied, failure and edge paths included? The issue is the contract for
+   *what* — a PR that follows its plan faithfully but misses an AC fails
    here.
+2. **Code against the plan.** Was the approved approach the one built, and
+   were the approved design decisions the ones made? Silent divergence is a
+   finding even when the result works — the maintainer approved a shape, and
+   changing it mid-build is an escalation, not a judgment call.
 
 Every finding cites an issue AC, a plan item, or a specific rule in
 CONVENTIONS.md. Anything that bothers you and isn't covered by one of those
