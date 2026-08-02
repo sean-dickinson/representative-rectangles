@@ -10,7 +10,7 @@ Replaces a manual workflow of downloading each Canvas submission, pasting it
 into a Google Doc, resizing by hand, and exporting for the printer.
 
 - [CLAUDE.md](CLAUDE.md) — what we're building and for whom
-- [TASKS.md](TASKS.md) — ordered plan of work, and what's blocked
+- GitHub issues labeled `task` — ordered plan of work, and what's blocked
 - [docs/CONVENTIONS.md](docs/CONVENTIONS.md) — how code here is expected to
   look, and the standard code review judges against
 
@@ -88,4 +88,4 @@ than by setting `config.time_zone`.
 Kamal to a single VPS, with the `storage/` volume holding both the SQLite
 databases and Active Storage files. The deploy config is still scaffolding —
 registry, host, SSL, secrets, and off-server backups are all outstanding. See
-task 12 in [TASKS.md](TASKS.md).
+the "Production deploy config" task issue.

@@ -30,6 +30,10 @@ Never commit with failing tests or lint errors and describe it as done.
 - **Style is RuboCop's job, not yours.** We inherit `rubocop-rails-omakase`
   unmodified. Run `bin/rubocop -a`. Don't argue style in review, and don't
   add cops or `.rubocop.yml` overrides without a reason stated in the PR.
+- **Scaffold with generators.** Use `bin/rails generate model/controller/migration
+  ...` to create new models, controllers, and migrations rather than
+  hand-writing the boilerplate — let Rails produce the migration, test
+  skeleton, and file layout, then edit from there.
 - **Rails-first.** Prefer a Rails built-in over a new gem, always: Active
   Storage for files, the built-in authentication generator for login, Solid
   Queue for jobs, Solid Cache, Action Mailer, `Rails.application.credentials`
@@ -205,6 +209,11 @@ already on.
     scanning the dashboard. Keep these few; they're slow.
 - Test behavior at its boundary, not implementation. Don't stub Active
   Record. Don't assert on private methods.
+- **Don't test the framework.** A test asserting an association, validation,
+  or enum exists — without exercising behavior that would break if it
+  didn't — proves nothing. Test the behavior the association/validation
+  enables (e.g. "assigning a duplicate email is invalid" not "validates
+  uniqueness of email"), not that you wrote the declaration.
 - **Every task's tests must cover the error and edge paths, not only the
   happy path.** A PR with only happy-path tests is incomplete. Missing
   coverage of a stated acceptance criterion is a review finding.
@@ -229,8 +238,6 @@ already on.
   workaround) get a one-line comment naming the reason.
 - Delete the Rails-generated placeholder comments from files you meaningfully
   edit. Don't leave commented-out code behind.
-- Keep [TASKS.md](../TASKS.md) current: check the task off, and if the work
-  changed shape, edit the task rather than silently diverging.
 
 ## Git
 
