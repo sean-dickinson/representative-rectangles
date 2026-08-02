@@ -2,20 +2,20 @@
 
 A Rails app that replaces a painful manual workflow for a specific school
 assignment: students submit a photo or PDF for the "representative
-rectangles" assignment, and the teacher currently has to download each
-submission from Canvas, paste it into a Google Doc/Slides deck, resize it by
-hand, and export a combined PDF to send to the printer. This app exists to
-remove that manual assembly step and make it easy for the teacher to track
-completion and quality of submissions.
+rectangles" assignment. Without this app the teacher downloads each
+submission from Canvas, pastes it into a Google Doc/Slides deck, resizes it
+by hand, and exports a combined PDF to send to the printer. This app exists
+to remove that manual assembly step and make it easy for the teacher to
+track completion and quality of submissions.
 
 ## Who uses this
 
 - **Teacher**: one primary user.
   Logs in with simple built-in auth (Rails' built-in authentication
   generator — email/password, no SSO).
-- **Students**: no accounts. Each assignment generates a unique
-  link/token that a student uses to submit their file. No login, no
-  password reset flows, no student-facing auth system.
+- **Students**: no accounts. Each student gets their own unique link/token
+  that they use to submit their file. No login, no password reset flows, no
+  student-facing auth system.
 
 ## Core workflow the app must support
 
@@ -73,9 +73,8 @@ or re-scope them as things change).
 
 ## Conventions
 
-- This is a new Rails app — follow standard Rails conventions (RESTful
-  resources, skinny controllers, ActiveRecord validations) unless a
-  decision above says otherwise.
+- Follow standard Rails conventions (RESTful resources, skinny controllers,
+  ActiveRecord validations) unless a decision above says otherwise.
 - Prefer Rails built-ins (Active Storage for file uploads, built-in
   authentication generator) over adding new gems/services unless there's a
   clear gap.

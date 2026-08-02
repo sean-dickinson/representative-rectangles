@@ -154,9 +154,8 @@ Two separate dependency trees, and they don't overlap:
 Rules:
 
 - **npm is the package manager.** `package-lock.json` is committed; run
-  `npm ci` in CI and Docker, `npm install` locally. Don't reintroduce yarn —
-  the scaffold shipped a mix of yarn-1 and Yarn Berry invocations and that's
-  been standardized away.
+  `npm ci` in CI and Docker, `npm install` locally. Don't add yarn
+  invocations — one package manager, and it's npm.
 - `app/assets/builds/` is gitignored. Never commit the compiled CSS.
 - You rarely need to build by hand: `bin/dev` watches, and `css:build` is
   wired into both `assets:precompile` and `test:prepare`, so tests and
