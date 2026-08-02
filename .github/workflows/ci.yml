@@ -39,6 +39,15 @@ jobs:
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bin/importmap audit
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Scan for security vulnerabilities in Node dependencies
+        run: npm audit
+
   lint:
     runs-on: ubuntu-latest
     env:
@@ -86,6 +95,16 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      # db:test:prepare triggers css:build (cssbundling-rails), which needs sass + Bulma
+      - name: Install Node dependencies
+        run: npm ci
+
       - name: Run tests
         env:
           RAILS_ENV: test
@@ -113,6 +132,16 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      # System tests render real pages, so the CSS bundle has to be built
+      - name: Install Node dependencies
+        run: npm ci
 
       - name: Run System Tests
         env:
