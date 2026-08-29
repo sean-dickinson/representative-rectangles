@@ -3,7 +3,7 @@
   "private": "true",
   "dependencies": {
     "bulma": "^1.0.4",
-    "sass": "^1.93.2"
+    "sass": "^1.103.1"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.bulma.scss:./app/assets/builds/application.css --no-source-map --quiet-deps --load-path=node_modules"
